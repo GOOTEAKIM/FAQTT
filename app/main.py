@@ -2,6 +2,8 @@
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 import mqtt_client
+from database import engine
+import models
 
 
 app = FastAPI()
@@ -11,6 +13,9 @@ app = FastAPI()
 async def startup_event():
     # mqtt 클라이언트 연결
     mqtt_client.connect_mqtt()
+    
+    # db 연결
+    models.Base.metadata.create_all(bind=engine)
 
 # 루트 경로를 정의하여 404 오류 방지
 @app.get("/")
