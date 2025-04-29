@@ -5,7 +5,6 @@ import mqtt_client
 from database import engine
 import models
 
-
 app = FastAPI()
 
 # FastAPI 애플리케이션이 시작될 때 MQTT 클라이언트 연결
