@@ -22,3 +22,6 @@ pip-selfcheck.json
 
 # ignore pyc
 **/*.pyc
+
+# .env 파일 무시
+.env

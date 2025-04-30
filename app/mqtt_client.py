@@ -1,5 +1,5 @@
-# mqtt 클라이언트, 브로커 관련 파일
-
+import os
+from dotenv import load_dotenv
 import paho.mqtt.client as mqtt
 from fastapi import WebSocket
 from sqlalchemy.orm import Session
@@ -7,10 +7,14 @@ import asyncio
 from database import get_db
 import models
 
-BROKER = 'localhost'
-PORT = 1883
-TOPIC = 'test/topic'
-KEEPALIVE = 60
+# .env 파일 로드
+load_dotenv()
+
+# MQTT 설정
+BROKER = os.getenv("BROKER")
+PORT = int(os.getenv("PORT"))
+TOPIC = os.getenv("TOPIC")
+KEEPALIVE = int(os.getenv("KEEPALIVE"))
 
 client = mqtt.Client()
 websockets = set()
@@ -33,14 +37,6 @@ def on_message(client, userdata, msg):
     db.commit()  # 커밋하여 DB에 저장
     db.refresh(db_message)  # DB에서 새로고침하여 최신 데이터 가져오기
     print(f"Saved to DB: {db_message.content}")
-
-
-# def connect_mqtt():
-#     client.on_message = on_message
-#     client.connect(BROKER, PORT)
-#     client.subscribe(TOPIC)
-#     client.loop_start()
-#     return client
 
 # 연결 성공 처리
 def on_connect(client, userdata, flags, rc):

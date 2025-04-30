@@ -1,12 +1,20 @@
-# db 연결하는 파일
+import os
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# MySQL 연결 URL (pymysql 사용)
+# .env 파일 로드
+load_dotenv()
 
-# SQLALCHEMY_DATABASE_URL = "mysql+pymysql://username:password@localhost/db_name"
-SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:1157139@127.0.0.1:3305/mqtt_db"
+# MySQL 연결 URL
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = os.getenv("DB_PORT")
+DB_NAME = os.getenv("DB_NAME")
+
+SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
 # SQLAlchemy 엔진 생성
 engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=True)
