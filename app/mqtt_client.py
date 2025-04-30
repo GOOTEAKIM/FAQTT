@@ -10,6 +10,7 @@ import models
 BROKER = 'localhost'
 PORT = 1883
 TOPIC = 'test/topic'
+KEEPALIVE = 60
 
 client = mqtt.Client()
 websockets = set()
@@ -34,8 +35,41 @@ def on_message(client, userdata, msg):
     print(f"Saved to DB: {db_message.content}")
 
 
+# def connect_mqtt():
+#     client.on_message = on_message
+#     client.connect(BROKER, PORT)
+#     client.subscribe(TOPIC)
+#     client.loop_start()
+#     return client
+
+# 연결 성공 처리
+def on_connect(client, userdata, flags, rc):
+    if rc == 0:
+        print("[MQTT 연결 성공]")
+        client.subscribe(TOPIC, qos=1)
+    else:
+        print(f"[MQTT 연결 실패] 코드 {rc}")
+
+# 연결 끊김 처리
+def on_disconnect(client, userdata, rc):
+    print(f"[MQTT 연결 종료] 코드: {rc}")
+    if rc != 0:
+        print("[MQTT 비정상 종료] 재연결 시도 중...")
+        try:
+            client.reconnect()
+        except Exception as e:
+            print(f"[재연결 실패] {e}")
+
+# MQTT 연결 함수
 def connect_mqtt():
+    client.on_connect = on_connect
     client.on_message = on_message
-    client.connect(BROKER, PORT)
-    client.subscribe(TOPIC)
+    client.on_disconnect = on_disconnect
+    client.connect(BROKER, PORT, KEEPALIVE)
     client.loop_start()
+    return client
+
+# MQTT 연결 종료 함수 (FastAPI shutdown 이벤트 등에서 호출 가능)
+def disconnect_mqtt():
+    client.loop_stop()
+    client.disconnect()
