@@ -134,3 +134,157 @@ npm run dev
   uvicorn==0.34.2
   websockets==15.0.1
   ```
+
+### Infra
+
+#### Docker
+
+1. WSL 환경에서 ubuntu 설치
+
+2. Docker 설치
+
+    ```bash
+
+    sudo apt update
+    sudo apt upgrade
+
+    curl -fsSL https://get.docker.com -o dockerSetter.sh
+    chmod 711 dockerSetter.sh
+    ./dockerSetter.sh
+
+    ```
+
+3. Docker 버전 확인
+
+    ```bash
+    docker -v
+    ```
+
+4. 방화벽, 포트 허용
+
+    ```bash
+    sudo ufw status
+    sudo ufw enable
+
+    sudo ufw allow 22
+    sudo ufw allow 443
+    
+    sudo shutdown -r now
+    
+    sudo ufw status
+    
+    sudo ufw allow 18080
+    sudo ufw allow 50000
+    sudo ufw allow 8081
+    sudo ufw allow 3306
+    ```
+
+5. Docker Compose 설치
+
+    ```bash
+    sudo apt update
+    sudo apt install docker-compose
+    ```
+
+6. Docker Compose 버전 확인
+
+    ```bash
+    docker-compose --version
+    ```
+
+#### eclipse mosquitto
+
+1. eclipse mosquitto 설치
+
+    ```bash
+    docker run -it -p 1883:1883 eclipse-mosquitto
+    ```
+
+2. mosquitto.conf 생성
+
+    ```bash
+    mkdir -p ~/mosquitto/config
+    touch ~/mosquitto/config/mosquitto.conf
+    ```
+
+3. mosquitto.conf 수정 (외부, 익명 접속 허용)
+
+    ```bash
+    listener 1883 0.0.0.0
+    allow_anonymous true
+    ```
+
+4. 백그라운드에서 실행
+
+    ```bash
+    docker run -d -p 1883:1883 eclipse-mosquitto
+    ```
+
+5. docker-compose.yml 수정
+
+    ```yml
+    version: '3'
+
+    services:
+    mosquitto:
+        image: eclipse-mosquitto
+        container_name: mosquitto
+        ports:
+        - "1883:1883"    # 외부에서 접속할 수 있도록 1883 포트 열기
+        volumes:
+        - ~/mosquitto/config/mosquitto.conf:/mosquitto/config/mosquitto.conf   # 수정한 mosquitto.conf 파일을 연결
+        restart: always   # 컨테이너가 종료되면 자동으로 다시 시작  
+
+    ```
+
+6. mosquitto-clients 패키지 설치
+
+    ```bash
+    sudo apt install mosquitto-clients
+    ```
+
+7. Docker Compose 실행
+
+    ```bash
+    docker-compose up -d
+    ```
+
+#### MySQL
+
+1. MySQL 이미지 다운
+
+    ```bash
+    docker pull mysql
+    ```
+
+2. MySQL 컨테이너 생성, 실행 (패스워드 필수, 포트 주의)
+
+    ```bash
+    docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=<password> -p 3305:3306 -d mysql:latest
+    ```
+
+3. local MySQL workbench에서 db 생성
+
+    - 사용자 : root
+    - 포트 : 3305
+    - password 필수
+
+4. 컨테이너의 MySQL 접속
+
+    ```bash
+    exec -it mysql-container bash
+    ```
+
+5. 데이터 베이스 확인
+    
+    ```sql
+    show databases;
+    ```
+
+6. 데이터 베이스 선택
+
+    ```sql
+    use my_db;
+    ```
+
+7. 이후 sql 문으로 데이터 조회 가능 
