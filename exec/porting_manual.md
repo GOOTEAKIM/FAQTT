@@ -249,6 +249,20 @@ npm run dev
     docker-compose up -d
     ```
 
+8. mqtt 메세지 발행
+
+    ```bash
+    mosquitto_pub -h localhost -p 1883 -t test/topic -m "hello world"
+    ```
+
+    | 옵션            | 설명                                                         |
+    |-----------------|--------------------------------------------------------------|
+    | `mosquitto_pub` | Mosquitto의 MQTT 퍼블리셔 명령어                              |
+    | `-h localhost`  | 브로커 주소 (`localhost` → 내 PC에 있는 MQTT 브로커)         |
+    | `-p 1883`       | 포트 번호 (기본 MQTT 포트)                                   |
+    | `-t test/topic` | 토픽 이름 (`test/topic`에 메시지를 보냄)                    |
+    | `-m "hello world"`| 보낼 메시지 내용                                             |
+
 #### MySQL
 
 1. MySQL 이미지 다운
@@ -272,7 +286,7 @@ npm run dev
 4. 컨테이너의 MySQL 접속
 
     ```bash
-    exec -it mysql-container bash
+    docker exec -it mysql_container mysql -uroot -p    
     ```
 
 5. 데이터 베이스 확인
