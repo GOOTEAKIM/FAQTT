@@ -1,5 +1,13 @@
 # Personal project
 
+### 🦺 [개요](#🦺-개요) | 🎓 [사용 기술](#🎓-사용-기술) | 🏭 [서비스 소개](#🏭-서비스-소개) | ⚡ [Network](#⚡-network) |  📈 [시스템 아키텍쳐](#📈-시스템-아키텍쳐) |🕶 [기대효과](#🕶-기대효과) |
+
+## 🦺 개요
+
+<!-- ### 서비스명:   -->
+
+### 개발기간: **2025년 4월 28일 ~ 5월 9일**
+
 ## 🎓 사용 기술
 
 ### INFRA
@@ -17,3 +25,5 @@
 ### Database
 
 <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+
+## 🏭 서비스 소개
