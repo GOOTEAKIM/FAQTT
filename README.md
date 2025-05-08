@@ -6,8 +6,6 @@
 
 이 프로젝트는 **Docker**, **MQTT(Eclipse Mosquitto)**, 그리고 **FastAPI**를 활용한 시스템 구조를 실습하고 검증해 보기 위해 진행한 개인 프로젝트입니다.
 
-**Docker** 에서 MQTT 메시지를 발행(Publisher)하면, 로컬 **FastAPI** 서버가 이것을 **구독(Subscriber)** 하여 메시지를 수신하고, 수신한 데이터는 **MySQL**에 저장됩니다.
-
 학습 목적의 토이 프로젝트이며, 실서비스 목적이 아닙니다.
 
 ### 개발기간: **2025년 4월 28일 ~ 5월 9일**
@@ -56,7 +54,7 @@
 
 ## 📈 시스템 아키텍쳐
 
-<img src="./exec/sys_architecture.PNG" height="400px">
+<img src="./exec/sys_architecture.png" height="400px">
 
 
 ## 📓 디렉토리 구조
