@@ -1,15 +1,15 @@
 ## 목차
 
 ### 🦺 [개요](#🦺-개요) | 🎓 [사용 기술](#🎓-사용-기술) | 🏭 [프로젝트 소개](#🏭-프로젝트-소개) |  📈 [시스템 아키텍쳐](#📈-시스템-아키텍쳐) | 📓 [디렉토리 구조](#📓-디렉토리-구조) |
-
+---
 ## 🦺 개요
 
 이 프로젝트는 **Docker**, **MQTT(Eclipse Mosquitto)**, 그리고 **FastAPI**를 활용한 시스템 구조를 실습하고 검증해 보기 위해 진행한 개인 프로젝트입니다.
 
 학습 목적의 토이 프로젝트이며, 실서비스 목적이 아닙니다.
 
-### 개발기간: **2025년 4월 28일 ~ 5월 9일**
-
+#### 개발기간: **2025년 4월 28일 ~ 5월 9일**
+---
 ## 🎓 사용 기술
 
 ### INFRA
@@ -25,7 +25,6 @@
 
 <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 
----
 
 ## 🏭 프로젝트 소개
 
@@ -33,7 +32,8 @@
 
 ### 작동 흐름
 
-1. **Docker 컨테이너 설정**
+1. **Ubuntu 실행**
+   - Docker container :
      - `MySQL`
      - `Mosquitto`
 
@@ -44,8 +44,8 @@
    - **MySQL** 에 저장
 
 3. **MQTT 메시지 발행**
-   - Docker의 `Mosquitto` 컨테이너에서 **Publisher** 역할을 하여 메시지 발행
-   - 메시지는 `Mosquitto` 브로커를 통해 FastAPI 서버로 전송
+   - Docker `Mosquitto` 컨테이너에서 **Publisher** 역할을 하여 메시지 발행
+   - 메시지는 `Mosquitto`를 통해 FastAPI 서버로 전송
 
 4. **메시지 수신**
    - FastAPI 서버에서 `Mosquitto`에서 발행된 메시지 수신
@@ -55,7 +55,6 @@
 ## 📈 시스템 아키텍쳐
 
 <img src="./exec/sys_architecture.png" height="400px">
-
 
 ## 📓 디렉토리 구조
 
