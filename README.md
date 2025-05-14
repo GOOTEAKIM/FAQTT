@@ -41,7 +41,6 @@
    - MQTT 메시지 **구독(Subscriber)**
    - 실시간으로 메시지 수신
    - 수신한 MQTT 메시지 처리 
-   - **MySQL** 에 저장
 
 3. **MQTT 메시지 발행**
    - Docker `Mosquitto` 컨테이너에서 **Publisher** 역할을 하여 메시지 발행
