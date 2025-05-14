@@ -302,3 +302,52 @@ npm run dev
     ```
 
 7. 이후 sql 문으로 데이터 조회 가능 
+
+## 6. 기타 참고사항
+
+### gitignore 설정
+  
+    # Created by https://www.toptal.com/developers/gitignore/api/venv
+    # Edit at https://www.toptal.com/developers/gitignore?templates=venv
+
+    ### venv ###
+    # Virtualenv
+    # http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+    .Python
+    [Bb]in
+    [Ii]nclude
+    [Ll]ib
+    [Ll]ib64
+    [Ll]ocal
+    [Ss]cripts
+    pyvenv.cfg
+    .venv
+    pip-selfcheck.json
+
+    # End of https://www.toptal.com/developers/gitignore/api/venv
+
+    # Ignore Python cache files
+    **/__pycache__/*
+
+    # ignore pyc
+    **/*.pyc
+
+    # .env 파일 무시
+    .env
+
+### .env 설정
+
+    # .env 파일
+
+    # MQTT 설정
+    BROKER= MQTT 브로커가 동작하는 장치의 IP 주소
+    PORT= mqtt container 포트 번호 (주로 1883)
+    TOPIC= 구독할 topic
+    KEEPALIVE= (단위 : 초), 본인 원하는 만큼 설정
+
+    # 데이터베이스 설정
+    DB_USER= db 사용자 (거의 root)
+    DB_PASSWORD= db 비밀번호
+    DB_HOST= db 주소
+    DB_PORT= 포트 번호
+    DB_NAME= db이름
