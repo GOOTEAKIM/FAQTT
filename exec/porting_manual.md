@@ -18,8 +18,6 @@
 ---
 ## 2. 개발 도구
 
-<!-- ### Frontend -->
-
 ### Backend
 
 - 프레임워크 : FastAPI
@@ -30,13 +28,6 @@
 - MySQL
 
 ## 3. 개발 환경
-
-<!-- ### Frontend
-
-| name       | version |
-|------------|---------|
-| Node.js    | 20.15.0 |
-| Vue3       | 18.3.1  | -->
 
 ### Backend
 
@@ -58,39 +49,18 @@
 | Docker   | 28.1.1                 |
 | Ubuntu   | 24.04.1             |
 
-<!-- ### EM
-
-| name           | version      |
-|----------------|--------------|
-| Raspberry Pi   | 5            |
-| python         | 3.9          |
-| Arduino        | D1 R2 mini, UNO | -->
 
 ---
 ## 4. 포트 정보
 
 ### MySQL : 3305
 
-### Backend : localhost
+### Mosquitto : 1883
 
-<!-- ### FrontEnd : 5173 -->
-
-### MQTT broker
-
-- MQTT : 1883
-<!-- - WebSocket : 9001 -->
 ---
 ## 5. 구동 방법
 
-<!-- ### FrontEnd
 
-```bash
-cd FE
-
-npm install 
-
-npm run dev
-``` -->
 
 ### BackEnd
 
