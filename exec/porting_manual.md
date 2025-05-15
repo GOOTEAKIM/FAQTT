@@ -106,7 +106,7 @@ npm run dev
     ```bash
     pip install -r requirements.txt
     ```
-5. FastAPI 서버 실행 (FastAPI_MQTT/app 에서 실행)
+5. FastAPI 서버 실행 (FAQTT/app 에서 실행)
     ```bash
     uvicorn app.main:app --reload
     ```
