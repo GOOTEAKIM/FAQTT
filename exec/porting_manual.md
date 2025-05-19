@@ -312,13 +312,13 @@
 
     # MQTT 설정
     BROKER= MQTT 브로커가 동작하는 장치의 IP 주소
-    PORT= mqtt container 포트 번호 (주로 1883)
+    PORT= mqtt container 포트 번호 (1883)
     TOPIC= 구독할 topic
     KEEPALIVE= (단위 : 초), 본인 원하는 만큼 설정
 
     # 데이터베이스 설정
-    DB_USER= db 사용자 (거의 root)
+    DB_USER= db 사용자 (root)
     DB_PASSWORD= db 비밀번호
     DB_HOST= db 주소
     DB_PORT= 포트 번호
-    DB_NAME= db이름
+    DB_NAME= db 이름
