@@ -28,8 +28,13 @@ async def websocket_endpoint(websocket: WebSocket):
     mqtt_client.websockets.add(websocket)
     try:
         while True:
-            await websocket.receive_text()
-    
+
+            message = await websocket.receive_text()
+            
+            print(f"[WebSocket에서 받은 메시지] {message}") # 메세지 백엔드 로그로 출력
+
+            # MQTT 브로커에 발행
+            mqtt_client.client.publish(mqtt_client.TOPIC, message)
     
     except WebSocketDisconnect:
         mqtt_client.websockets.remove(websocket)
