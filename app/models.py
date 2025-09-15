@@ -1,6 +1,6 @@
 # db 테이블 연동하는 파일
 from sqlalchemy import Column, Integer, String
-from database import Base
+from .database import Base
 
 class Message(Base):
     # 테이블 이름

@@ -1,9 +1,9 @@
 # FastAPI 실행하는 파일
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
-import mqtt_client
-from database import engine
-import models
+from .database import engine
+from . import mqtt_client
+from . import models
 
 app = FastAPI()
 
@@ -29,5 +29,7 @@ async def websocket_endpoint(websocket: WebSocket):
     try:
         while True:
             await websocket.receive_text()
+    
+    
     except WebSocketDisconnect:
         mqtt_client.websockets.remove(websocket)
